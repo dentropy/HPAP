@@ -1,0 +1,17 @@
+{
+  "name": "hpap",
+  "version": "0.0.1",
+  "description": "",
+  "main": "createAttestation.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "ethers": "^6.13.4",
+    "nostr-tools": "^2.10.1"
+  }
+}
