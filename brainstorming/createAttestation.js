@@ -18,6 +18,13 @@ const encodedData = schemaEncoder.encodeData([
   { name: 'AIGenerated', value: false, type: 'bool' }
 ]);
 
+const encodedData2 = schemaEncoder.encodeData([
+	{ name: "nostrEventId", value: "3f8b25399d957844d0c7ebcc981be6aa628e8cb2a192075c126d56fe4b1eb9b2", type: "string" },
+	{ name: "CID", value: "eca61dae93d2bde2c7eefd764cdbc8c31650a41d5da742b67e6efcd8931ae596", type: "string" },
+	{ name: "internetIdentifier", value: "paul@ddaemon.org", type: "string" },
+	{ name: "AIGenerated", value: false, type: "bool" }
+]);
+
 const schemaUID = '0x9908e8cf7836eb73b29fb0d6d946cda72ffa75f903d094c64752f44c0e63f7cf';
 
 const transaction = await eas.attest({

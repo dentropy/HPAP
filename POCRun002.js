@@ -4,10 +4,8 @@ import HPAPfromEASUID from "./POCFunction";
 
 // EAS Attestation: https://sepolia.easscan.org/attestation/view/0x324897cee471ac2670f8c56d31a691bd542add1f4a88bcfe2494193e397554fa
 
-
-
 let EASData = {
-    uid : "0x324897cee471ac2670f8c56d31a691bd542add1f4a88bcfe2494193e397554fa",
+    uid : "0x5c72e98854ac8e8f09c7e60da363927fe93761c098c60617c13d1bd2f8d472a1",
     easContractAddress : "0xC2679fBD37d54388Ce493F1DB75320D236e1815e",
     schemaRegistryContractAddress : "0x0a7E2Ff54e76B8E6659aedc9103FB21c038050D0",
     provider_http_url : "https://sepolia.infura.io/v3/063b32ba31b3461ebca9646500a22df3",
@@ -18,4 +16,8 @@ let EASData = {
 
 let data = await HPAPfromEASUID(EASData)
 console.log(data)
+
+import fs from 'fs'
+await fs.writeFileSync("content_buffer", data.content_buffer,  "binary");
+
 process.exit()

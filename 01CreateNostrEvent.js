@@ -6,8 +6,15 @@ import * as nip19 from 'nostr-tools/nip19'
 // let mnemonic_validation = validateWords(mnemonic)
 // let secret_key = privateKeyFromSeedWords(mnemonic, "", 0)
 
+let data_to_attest = {
+    CID : "38aaa565404a79034d93409993e4adbd5e575317fe54b556d281f958a97ec34a",
+    content_url : "https://blossom.newatlantis.top//38aaa565404a79034d93409993e4adbd5e575317fe54b556d281f958a97ec34a",
+    IID: "paul@ddaemon.org",
+    AIGenerated: "false"
+}
 
-let secret_key = nip19.decode("nsec190tamgf2fdj5lgnhcpx50fx3w3rvneahav3xa4r5y9umdlcrzq8qmmuf32").data
+
+let secret_key = nip19.decode(process.env.NSEC).data
 let public_key = getPublicKey(secret_key)
 
 
@@ -19,19 +26,19 @@ let signedEvent = finalizeEvent({
     tags: [
         [
             "CID",
-            "eca61dae93d2bde2c7eefd764cdbc8c31650a41d5da742b67e6efcd8931ae596",
-            "https://blossom.newatlantis.top/eca61dae93d2bde2c7eefd764cdbc8c31650a41d5da742b67e6efcd8931ae596"
+            data_to_attest.CID,
+            data_to_attest.content_url
         ],
         [
             "IID",
-            "paul@ddaemon.org"
+            data_to_attest.IID
         ],
         [
             "AIGenerated",
-            "false"
+            data_to_attest.AIGenerated
         ]
     ],
-    content: 'My Profile Pic',
+    content: 'By the content of this meme I don\'t think is it AI generated',
 }, secret_key)
 
 let isGood = verifyEvent(signedEvent)

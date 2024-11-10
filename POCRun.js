@@ -5,8 +5,8 @@ import HPAPfromEASUID from "./POCFunction";
 // EAS Attestation: https://sepolia.easscan.org/attestation/view/0x324897cee471ac2670f8c56d31a691bd542add1f4a88bcfe2494193e397554fa
 
 let EASData = {
-    easContractAddress : "0xC2679fBD37d54388Ce493F1DB75320D236e1815e",
     uid : "0x324897cee471ac2670f8c56d31a691bd542add1f4a88bcfe2494193e397554fa",
+    easContractAddress : "0xC2679fBD37d54388Ce493F1DB75320D236e1815e",
     schemaRegistryContractAddress : "0x0a7E2Ff54e76B8E6659aedc9103FB21c038050D0",
     provider_http_url : "https://sepolia.infura.io/v3/063b32ba31b3461ebca9646500a22df3",
     relays : [
