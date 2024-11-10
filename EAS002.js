@@ -13,7 +13,7 @@ await eas.connect(wallet);
 // Initialize SchemaEncoder with the schema string
 const schemaEncoder = new SchemaEncoder("string nostrEventId,string CID,string internetIdentifier,bool AIGenerated");
 const encodedData = schemaEncoder.encodeData([
-	{ name: "nostrEventId", value: "1bcafdee6379d3d1c10b1c14333ad06c2c577c47c60d153b188d73d11406031b", type: "string" },
+	{ name: "nostrEventId", value: "3f8b25399d957844d0c7ebcc981be6aa628e8cb2a192075c126d56fe4b1eb9b2", type: "string" },
 	{ name: "CID", value: "eca61dae93d2bde2c7eefd764cdbc8c31650a41d5da742b67e6efcd8931ae596", type: "string" },
 	{ name: "internetIdentifier", value: "paul@ddaemon.org", type: "string" },
 	{ name: "AIGenerated", value: false, type: "bool" }
