@@ -2,11 +2,12 @@
 const easContractAddress = "0xC2679fBD37d54388Ce493F1DB75320D236e1815e";
 const uid = "0x324897cee471ac2670f8c56d31a691bd542add1f4a88bcfe2494193e397554fa";
 const schemaRegistryContractAddress = "0x0a7E2Ff54e76B8E6659aedc9103FB21c038050D0";
-const schemaUID = "0x9908e8cf7836eb73b29fb0d6d946cda72ffa75f903d094c64752f44c0e63f7cf";
 let provider_http_url = "https://sepolia.infura.io/v3/063b32ba31b3461ebca9646500a22df3"
 let relays = [
     'wss://relay.damus.io/'
 ]
+// Turns out the schemaUID is in the attestation itself so we don't need it
+// const schemaUID = "0x9908e8cf7836eb73b29fb0d6d946cda72ffa75f903d094c64752f44c0e63f7cf";
 
 
 
@@ -20,18 +21,12 @@ let provider = new ethers.JsonRpcProvider(provider_http_url)
 const eas = new EAS(easContractAddress);
 eas.connect(provider);
 const attestation = await eas.getAttestation(uid);
-console.log(Object.keys(attestation));
-// for(var item of attestation){
-//     console.log("")
-//     console.log(item)
-// }
-// Get the schema from the EAS Registry
 const schemaRegistry = new SchemaRegistry(schemaRegistryContractAddress);
 schemaRegistry.connect(provider);
-const schemaRecord = await schemaRegistry.getSchema({ uid: schemaUID });
+const schemaRecord = await schemaRegistry.getSchema({ uid: attestation[1] });
 let schemaEncoder = new SchemaEncoder(schemaRecord[3])
 let decodeData = schemaEncoder.decodeData(attestation[9])
-console.log(decodeData)
+console.log("Able to decode data from EAS(Ethereum Attestation Service\n")
 
 
 
@@ -41,9 +36,6 @@ import { SimplePool } from "nostr-tools/pool";
 export const nostrGet = async (relays, filter) => {
     const pool = new SimplePool();
     const events = await pool.querySync(relays, filter);
-    pool.publi
-    console.log("events");
-    console.log(events);
     return events;
 };
 let nostr_filter = {
@@ -78,6 +70,7 @@ for(let element of the_nostr_event.tags){
         nostr_event_data.AIGenerated = element
     }
 }
+console.log("Got Nostr event mentioned on EAS")
 console.log(nostr_event_data)
 
 
@@ -123,8 +116,6 @@ let cubid_user_response = await fetch("https://passport.cubid.me/api/v2/create_u
     headers: { "Content-Type": "application/json" },
 });
 cubid_user_response = await cubid_user_response.json()
-console.log(cubid_user_response)
-
 let cubid_user_score_response = await fetch("https://passport.cubid.me/api/v2/score/fetch_score", {
     method: "POST",
     body: JSON.stringify({ 
@@ -134,5 +125,12 @@ let cubid_user_score_response = await fetch("https://passport.cubid.me/api/v2/sc
     headers: { "Content-Type": "application/json" },
 });
 cubid_user_score_response = await cubid_user_score_response.json()
-console.log(cubid_user_score_response)
+let return_response = {
+    content_url: nostr_event_data.CID[2],
+    IID : nostr_event_data.IID[1],
+    CID : nostr_event_data.CID[1],
+    cubid_score : cubid_user_score_response.cubid_score,
+    AIGenerated : nostr_event_data.AIGenerated[1],
+}
+console.log(return_response)
 process.exit()

@@ -11,3 +11,9 @@ Use Human Trusting Technologies such as WOT(Web of Trust) and cubid_score to bui
 * Human setups up Nostr [[NIP05]] DNS based [[Internet Identifier]] that matches their email [[Internet Identifier]] 
 * Human creates and publishes Nostr event articulating their opinion of the art and its metadata using the private key their [[NIP05]] [[Internet Identifier]] points to
 * The ID of the Nostr Event is published on the [[Ethereum Attestation Service - EAS]] for [[Proof of History]] purposes, Nostr Events can be easy to retroactively create
+
+
+#### Sepolia Links
+
+- [Ethereum Sepolia Faucet](https://www.alchemy.com/faucets/ethereum-sepolia)
+- [Sepolia RPC and Chain settings | ChainList](https://chainlist.org/chain/11155111)
