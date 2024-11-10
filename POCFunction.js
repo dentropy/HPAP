@@ -138,7 +138,8 @@ export default async function HPAPfromEASUID(EASData) {
         CID: nostr_event_data.CID[1],
         cubid_score: cubid_user_score_response.cubid_score,
         AIGenerated: nostr_event_data.AIGenerated[1],
-        nostr_event_data: nostr_event_data
+        nostr_event_data: nostr_event_data,
+        content_buffer: content_buffer
     }
     return return_response
 }

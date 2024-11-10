@@ -16,4 +16,8 @@ let EASData = {
 
 let data = await HPAPfromEASUID(EASData)
 console.log(data)
+
+import fs from 'fs'
+await fs.writeFileSync("content_buffer", data.content_buffer,  "binary");
+
 process.exit()
